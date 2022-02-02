@@ -15,7 +15,7 @@ module.exports = (movies) =>
 							<div class="content">
 								<a href="/movies/${movie.id}"><p>${movie.id}. <span class="title">${movie.Title}</span></p></a>
 								<ul>
-									<li>Year: ${movie.Year}</li>
+									<li>★: ${movie.Rating}</li>
 									<li>Rated: ${movie.Rated}</li>
 								</ul>
 							</div>

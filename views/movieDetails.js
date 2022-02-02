@@ -12,6 +12,7 @@ module.exports = (movie) =>
 				<div class="content">
 					<ul>
 						<li>Year: ${movie.Year}</li>
+						<li>★: ${movie.Rating}</li>
 						<li>Released: ${movie.Released}</li>
 						<li>Rated: ${movie.Rated}</li>
 						<li>Genre: ${movie.Genre}</li>
