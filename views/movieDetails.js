@@ -8,7 +8,7 @@ module.exports = (movie) =>
 			
 			<div class="container">
 				<a href="/movies/${movie.id}"><p>${movie.id}. <span class="title">${movie.Title}</span></p></a>
-				<img src='${movie.Poster}'/>
+				<a href="/movies/${movie.id}"><img src='${movie.Poster}'/></a>
 				<div class="content">
 					<ul>
 						<li>Year: ${movie.Year}</li>
@@ -22,9 +22,18 @@ module.exports = (movie) =>
 						<li>Awards: ${movie.Awards}</li>
 					</ul>
 					<div class="switch">
-						<a href="/movies/${movie.id-1}"><h4> << Previous</h4></a>
+						${movie.id === 1 ? 
+							`<a class="disablePrevious" href="/movies/${movie.id-1}"><h4> << Previous</h4></a>`
+						:
+							`<a href="/movies/${movie.id-1}"><h4> << Previous</h4></a>`
+							
+						}
 						<a href="/"><h4>See All</h4></a>
-						<a href="/movies/${movie.id+1}"><h4>Next >> </h4></a>
+						${movie.id === 16 ?
+							`<a class="disableNext" href="/movies/${movie.id+1}"><h4>Next >> </h4></a>`
+						:
+							`<a href="/movies/${movie.id+1}"><h4>Next >> </h4></a>`
+						}
 					</div>
 				</div>
 			</div>
