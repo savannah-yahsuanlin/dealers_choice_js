@@ -1,3 +1,4 @@
+const fs = require('fs')
 const express = require('express')
 const morgan = require('morgan')
 const http = require('http')
@@ -29,6 +30,8 @@ app.get('/movies/:id', (req, res) => {
 })
 
 app.post('/:title', (req, res) => {
+	console.log('body', req.body.title);    
+	const movies = data.list()
 	const content = req.body.title
 	res.send(`
 		<html>
@@ -36,6 +39,10 @@ app.post('/:title', (req, res) => {
 				<link rel="stylesheet" href="/style.css"/>
 			</head>
 			<body>
+				${movies.map(movie => movie.Title === content ? `
+						<h1>Movie title: ${movie.Title}</h1>
+						<img src="${movie.Poster}"/>
+					` : '').join('')}
 				<h1>Successfully found the movie: ${content}</h1>
 				<a href="/"><p>Search More</p></a>
 			</body>
@@ -52,6 +59,7 @@ app.use((err, data) => {
 		res.send(`${data}`)
 	}
 })
+
 
 
 const port = process.env.Port || 3000

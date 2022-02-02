@@ -9,6 +9,7 @@ module.exports = (movies) =>
 				<h1>Movie Channel</h1>
 				<form method="POST" action="/typeahead">
 					<input type="search" placeholder="Search Movie" size="30" name="title"/>
+					<p><small>Lowercase and Uppercase matters</small></p>
 				</form>
 				<div class="wrap">
 					${movies.map(movie => 
