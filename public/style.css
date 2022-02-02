@@ -21,6 +21,18 @@ h1 {
 	text-align: center;
 }
 
+form {
+	display: flex;
+	justify-content: center;
+	margin: 20px auto;
+	height: 25px;
+}
+
+input {
+	padding: 2px 5px;
+	border: none;
+}
+
 .wrap {
 	display: flex;
 	justify-content: center;
