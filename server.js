@@ -6,6 +6,8 @@ const movieDetails = require("./views/movieDetails")
 const bodyParser = require('body-parser')
 const data = require('./data')
 const {reset}=require('nodemon')
+const res=require('express/lib/response')
+const {resetWatchers}=require('nodemon/lib/monitor/watch')
 const app = express()
 
 
@@ -40,6 +42,17 @@ app.post('/:title', (req, res) => {
 		</html>
 	`)
 })
+
+app.use((err, data) => {
+	if(err){
+		res.statusCode = 404
+		res.write('<h1>Page Not Found</h1>')
+		res.end()
+	} else {
+		res.send(`${data}`)
+	}
+})
+
 
 const port = process.env.Port || 3000
 
