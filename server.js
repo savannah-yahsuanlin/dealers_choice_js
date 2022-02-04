@@ -39,11 +39,11 @@ app.post('/:title', (req, res) => {
 				<link rel="stylesheet" href="/style.css"/>
 			</head>
 			<body>
+				<h1>Successfully found the movie: ${content}</h1>
 				${movies.map(movie => movie.Title === content ? `
 						<h1>Movie title: ${movie.Title}</h1>
 						<img src="${movie.Poster}"/>
 					` : '').join('')}
-				<h1>Successfully found the movie: ${content}</h1>
 				<a href="/"><p>Search More</p></a>
 			</body>
 		</html>
@@ -51,13 +51,17 @@ app.post('/:title', (req, res) => {
 })
 
 app.use((err, data) => {
-	if(err){
-		res.statusCode = 404
-		res.write('<h1>Page Not Found</h1>')
-		res.end()
-	} else {
-		res.send(`${data}`)
-	}
+	res.status = 404
+	res.send(`
+		<html>
+			<head>
+				<link rel="stylesheet" href="/style.css"/>
+			</head>
+			<body>
+				<h1>Sorry, this page cannot be found!</h1>
+			</body>
+		</html>
+	`)
 })
 
 
